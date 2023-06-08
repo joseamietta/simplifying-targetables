@@ -2,7 +2,7 @@
   "name": "@joseamietta/simplifying-targetables",
   "description": "Simplify PWAStudio extensibility framework",
   "version": "v0.1.0",
-  "author": "José M. Amietta <josemaietta@gmail.com>",
+  "author": "José M. Amietta <joseamietta@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/joseamietta/simplifying-targetables",
   "main": "src/index.js",

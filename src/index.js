@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const { Targetables } = require('@magento/pwa-buildpack');
 
-module.exports = class ExtendLocalIntercept {
+class ExtendLocalIntercept {
     componentsCache = [];
 
     constructor(targets, magentoPath = 'node_modules/@magento') {
@@ -22,6 +22,8 @@ module.exports = class ExtendLocalIntercept {
             }
         });
 
+        const currentPath = process.cwd();
+
         paths.forEach(myPath => {
             const componentType = myPath.includes('rootComponents')
                 ? 'rootComponents'
@@ -37,7 +39,7 @@ module.exports = class ExtendLocalIntercept {
                     const component = this.getReactComponent(
                         relativePath.replace('node_modules/', '')
                     );
-                    const componentInterceptor = require('./' + myPath);
+                    const componentInterceptor = require(path.resolve(currentPath, myPath));
                     componentInterceptor.interceptComponent(component);
                 }
             });
@@ -87,7 +89,7 @@ module.exports = class ExtendLocalIntercept {
 
     async allowPeregrineWraps(
         fileExtension = 'use*.js',
-        targetablesPath = ['src/wrappers/hooks', 'src/wrappers/talons']
+        targetablesPath = 'src/wrappers'
     ) {
         const paths = await globby(targetablesPath, {
             expandDirectories: {
@@ -157,3 +159,5 @@ module.exports = class ExtendLocalIntercept {
         ] = this.targetables.reactComponent(modulePath));
     }
 }
+
+module.exports.ExtendLocalIntercept = ExtendLocalIntercept;
