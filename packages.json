@@ -1,0 +1,16 @@
+{
+  "name": "@joseamietta/simplifying-targetables",
+  "description": "Simplify PWAStudio extensibility framework",
+  "version": "v0.1.0",
+  "author": "José M. Amietta <josemaietta@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/joseamietta/simplifying-targetables",
+  "main": "src/index.js",
+  "dependencies": {
+    "globby": "^11.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": ["Magento 2", "PWAStudio"]
+}
